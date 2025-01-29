@@ -1,0 +1,67 @@
+﻿<Window x:Class="Hospital.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="900">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF2297E2" Offset="1"/>
+                <GradientStop Color="#FFEDF8FF" Offset="0.007"/>
+                <GradientStop Color="#FFC4E4F9" Offset="0.377"/>
+                <GradientStop Color="#FF5DB3EA" Offset="0.983"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Grid.Column="0" Content="Данные о пациенте" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" ></Label>
+        <Label Grid.Row="3" Grid.Column="0" Content="ФИО пациента" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="4" Grid.Column="0" Content="Дата рождения" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="5" Grid.Column="0" Content="Пол" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="18"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="6" Grid.Column="0" Content="Номер медицинской карты" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="7" Grid.Column="0" Content="Диагноз" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="8" Grid.Column="0" Content="Дата приема" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+
+        <TextBox  Grid.Row="3" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding SelectedProblem.FullName}"/>
+        <DatePicker Grid.Row="4" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" SelectedDate="{Binding SelectedProblem.DateOfBirth}" />
+        <TextBox  Grid.Row="5" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding SelectedProblem.Gender}" />
+        <TextBox  Grid.Row="6" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding SelectedProblem.MedicalCardNumber}"/>
+        <TextBox  Grid.Row="7" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding SelectedProblem.Diagnosis}" />
+        <DatePicker Grid.Row="8" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" SelectedDate="{Binding SelectedProblem.AdmissionDate}" />
+
+        <ListView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="6" ItemsSource="{Binding SelectedCategory.Patient}"  SelectedItem="{Binding SelectedProblem}" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= FullName}" Width="150">ФИО пациента</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= DateOfBirth}" Width="70">Дата рождения</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= Gender}" Width="70">Пол</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= MedicalCardNumber}" Width="100">Номер медицинской карты</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= Diagnosis}" Width="100">Диагноз</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= AdmissionDate}" Width="100">Дата приема</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Column="0" Grid.Row="2"  Margin="15" Content="Создать" FontSize="26"  FontWeight="ExtraBold" Click="Button_Click"  ></Button>
+    </Grid>
+</Window>
