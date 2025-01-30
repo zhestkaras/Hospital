@@ -36,32 +36,42 @@
 
         </Grid.ColumnDefinitions>
         <Label Grid.Row="1" Grid.Column="0" Content="Данные о пациенте" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" ></Label>
-        <Label Grid.Row="3" Grid.Column="0" Content="ФИО пациента" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
-        <Label Grid.Row="4" Grid.Column="0" Content="Дата рождения" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
-        <Label Grid.Row="5" Grid.Column="0" Content="Пол" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="18"  FontWeight="SemiBold"></Label>
-        <Label Grid.Row="6" Grid.Column="0" Content="Номер медицинской карты" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
-        <Label Grid.Row="7" Grid.Column="0" Content="Диагноз" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
-        <Label Grid.Row="8" Grid.Column="0" Content="Дата приема" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="2" Grid.Column="0" Content="ФИО пациента" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="3" Grid.Column="0" Content="Дата рождения" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="4" Grid.Column="0" Content="Пол" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="18"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="5" Grid.Column="0" Content="Номер медицинской карты" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="6" Grid.Column="0" Content="Диагноз" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="7" Grid.Column="0" Content="Дата приема" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="20"  FontWeight="SemiBold"></Label>
+        <Label Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" Content="Детская поликлиника" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="40"  FontWeight="UltraBold">
+            <Label.Foreground>
+                <ImageBrush ImageSource="/10. Цветы.jpg"/>
+            </Label.Foreground>
+        </Label>
 
-        <TextBox  Grid.Row="3" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding SelectedProblem.FullName}"/>
-        <DatePicker Grid.Row="4" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" SelectedDate="{Binding SelectedProblem.DateOfBirth}" />
-        <TextBox  Grid.Row="5" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding SelectedProblem.Gender}" />
-        <TextBox  Grid.Row="6" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding SelectedProblem.MedicalCardNumber}"/>
-        <TextBox  Grid.Row="7" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding SelectedProblem.Diagnosis}" />
-        <DatePicker Grid.Row="8" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" SelectedDate="{Binding SelectedProblem.AdmissionDate}" />
 
-        <ListView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="6" ItemsSource="{Binding SelectedCategory.Patient}"  SelectedItem="{Binding SelectedProblem}" >
+        <TextBox  Grid.Row="2" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding EditPatient.FullName}"/>
+        <DatePicker Grid.Row="3" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" SelectedDate="{Binding EditPatient.DateOfBirth}" />
+        <TextBox  Grid.Row="4" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding EditPatient.Gender}" />
+        <TextBox  Grid.Row="5" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding EditPatient.MedicalCardNumber}"/>
+        <TextBox  Grid.Row="6" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" Text="{Binding EditPatient.Diagnosis}" />
+        <DatePicker Grid.Row="7" Grid.Column="0" Margin="10,10"  VerticalAlignment="Bottom" SelectedDate="{Binding EditPatient.AdmissionDate}" />
+
+        <ListView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="6" ItemsSource="{Binding Patients}"  SelectedItem="{Binding EditPatient}" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path= FullName}" Width="150">ФИО пациента</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path= DateOfBirth}" Width="70">Дата рождения</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path= Gender}" Width="70">Пол</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path= MedicalCardNumber}" Width="100">Номер медицинской карты</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path= Diagnosis}" Width="100">Диагноз</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path= AdmissionDate}" Width="100">Дата приема</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= FullName}" Width="250">ФИО пациента</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= DateOfBirth}" Width="200">Дата рождения</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= Gender}" Width="100">Пол</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= MedicalCardNumber}" Width="200">Номер медицинской карты</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= Diagnosis}" Width="200">Диагноз</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= AdmissionDate}" Width="200">Дата приема</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Column="0" Grid.Row="2"  Margin="15" Content="Создать" FontSize="26"  FontWeight="ExtraBold" Click="Button_Click"  ></Button>
+        <Image Grid.Column="2"   Grid.RowSpan="3" Margin="0" Grid.Row="0" Source="/soln.gif" />
+
+        <Button Grid.Column="0" Grid.Row="8"  Margin="15" Content="Создать" FontSize="26"  FontWeight="ExtraBold" Command="{Binding AddPatientCommand}" />
+
+
     </Grid>
 </Window>
